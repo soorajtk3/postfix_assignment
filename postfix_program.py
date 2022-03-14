@@ -1,26 +1,27 @@
+import re
+
+
 def postfix(value):
     stack = []
-    numbers = "0123456789"
     for i in value:
-        if i in numbers:
+        if i.isdigit():
             stack.append(int(i))
         elif i == '+':
-            digit1 = stack.pop()
-            digit2 = stack.pop()
-            stack.append(int(digit1)+int(digit2))
+            number1 = stack.pop()
+            number2 = stack.pop()
+            stack.append(number1+number2)
         elif i == '-':
-            digit1 = stack.pop()
-            digit2 = stack.pop()
-            stack.append(int(digit1)-int(digit2))
+            number1 = stack.pop()
+            number2 = stack.pop()
+            stack.append(number1-number2)
         elif i == '/':
-            digit1 = stack.pop()
-            digit2 = stack.pop()
-            stack.append(int(digit1)/int(digit2))
+            number1 = stack.pop()
+            number2 = stack.pop()
+            stack.append(number1/number2)
         elif i == '*':
-            digit1 = stack.pop()
-            digit2 = stack.pop()
-            stack.append(int(digit1)*int(digit2))
+            number1 = stack.pop()
+            number2 = stack.pop()
+            stack.append(number1*number2)
+        else:
+            return False
     return stack.pop()
-
-
-(postfix("452*+"))
