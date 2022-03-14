@@ -9,3 +9,8 @@ def test_post_str():
 def test_postfix():
     ret = postfix_program.postfix("452*+")
     assert ret == 14
+
+
+def testonly_operator():
+    ret = postfix_program.postfix("/*-+*-/-/-+")
+    assert ret == "error"
